@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [chatMessages, setChatMessages] = useState([
     { type: 'bot', text: 'Привет! Я помогу с вопросами о документах и процедурах ТИУ. Что вас интересует?' }
   ]);
@@ -48,7 +50,8 @@ const Index = () => {
       description: 'Управление профилем и персональными данными',
       icon: 'User',
       color: 'bg-blue-50 hover:bg-blue-100',
-      features: ['Хранение документов', 'История запросов', 'Личные заметки']
+      features: ['Хранение документов', 'История запросов', 'Личные заметки'],
+      path: '/personal-cabinet'
     },
     {
       id: 'bot',
@@ -56,7 +59,8 @@ const Index = () => {
       description: 'ИИ-помощник для быстрых ответов',
       icon: 'Bot',
       color: 'bg-purple-50 hover:bg-purple-100',
-      features: ['Ответы на вопросы', 'Инструкции', 'Напоминания', 'Снижение нагрузки']
+      features: ['Ответы на вопросы', 'Инструкции', 'Напоминания', 'Снижение нагрузки'],
+      path: '#'
     },
     {
       id: 'documents',
@@ -64,7 +68,8 @@ const Index = () => {
       description: 'Управление документооборотом',
       icon: 'FileText',
       color: 'bg-green-50 hover:bg-green-100',
-      features: ['Оформление', 'Отслеживание', 'Распределение']
+      features: ['Оформление', 'Отслеживание', 'Распределение'],
+      path: '/document-flows'
     },
     {
       id: 'security',
@@ -72,9 +77,18 @@ const Index = () => {
       description: 'Защита данных и конфиденциальность',
       icon: 'Shield',
       color: 'bg-orange-50 hover:bg-orange-100',
-      features: ['Шифрование', 'Контроль доступа', 'Аудит безопасности']
+      features: ['Шифрование', 'Контроль доступа', 'Аудит безопасности'],
+      path: '/security'
     }
   ];
+
+  const handleSectionClick = (section: any) => {
+    if (section.id === 'bot') {
+      setIsChatOpen(true);
+    } else {
+      navigate(section.path);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -144,7 +158,10 @@ const Index = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">
+                <Button 
+                  className="w-full mt-6 bg-blue-600 hover:bg-blue-700"
+                  onClick={() => handleSectionClick(section)}
+                >
                   Перейти в {section.title.toLowerCase()}
                 </Button>
               </CardContent>

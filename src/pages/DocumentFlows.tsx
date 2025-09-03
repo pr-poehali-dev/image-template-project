@@ -245,7 +245,7 @@ const DocumentFlows = () => {
                       </div>
                     </div>
 
-                    <Button className="w-full bg-primary hover:bg-primary/90">
+                    <Button className="w-full bg-primary hover:bg-primary/90 justify-center">
                       <Icon name="FileText" size={16} className="mr-2" />
                       Подать заявление
                     </Button>
@@ -301,13 +301,13 @@ const DocumentFlows = () => {
                         </div>
                       </div>
 
-                      <div className="flex gap-2 mt-4">
-                        <Button variant="outline" size="sm" className="bg-white/50 hover:bg-white/80">
+                      <div className="flex gap-2 mt-4 justify-start">
+                        <Button variant="outline" size="sm" className="bg-white/50 hover:bg-white/80 justify-center">
                           <Icon name="Eye" size={14} className="mr-1" />
                           Подробнее
                         </Button>
                         {request.status === 'approved' && (
-                          <Button size="sm" className="bg-primary hover:bg-primary/90">
+                          <Button size="sm" className="bg-primary hover:bg-primary/90 justify-center">
                             <Icon name="Download" size={14} className="mr-1" />
                             Скачать
                           </Button>

@@ -13,14 +13,14 @@ const PersonalCabinet = () => {
   const [selectedDocument, setSelectedDocument] = useState(null);
 
   const studentInfo = {
-    name: "Анна Петровна Смирнова",
-    studentId: "ТИУ-2021-001234",
-    group: "ИВТ-21-1",
-    faculty: "Институт математики и компьютерных наук",
+    name: "Никита",
+    studentId: "ТИУ-2025-3451234", 
+    group: "ИСПБ-25-1",
+    faculty: "Бизнес-Информатика",
     semester: "6 семестр",
-    gpa: 4.2,
-    completedCredits: 180,
-    totalCredits: 240
+    gpa: 91,
+    completedCredits: 75,
+    totalCredits: 100
   };
 
   const documents = [
@@ -364,10 +364,16 @@ const PersonalCabinet = () => {
                   <Icon name="Calendar" size={48} className="mx-auto text-gray-400 mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 mb-2">Расписание на неделю</h3>
                   <p className="text-gray-600 mb-6">Здесь будет отображаться ваше расписание занятий</p>
-                  <Button variant="outline">
-                    <Icon name="Download" size={16} className="mr-2" />
-                    Скачать расписание
-                  </Button>
+                  <div className="flex gap-3 justify-center">
+                    <Button variant="outline">
+                      <Icon name="Download" size={16} className="mr-2" />
+                      Скачать расписание
+                    </Button>
+                    <Button variant="outline">
+                      <Icon name="BookOpen" size={16} className="mr-2" />
+                      Учебный план
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>

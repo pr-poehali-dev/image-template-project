@@ -164,10 +164,10 @@ const Index = () => {
                   ))}
                 </ul>
                 <Button 
-                  className="w-full mt-6 bg-blue-600 hover:bg-blue-700"
+                  className="w-full mt-6 bg-blue-600 hover:bg-blue-700 justify-center"
                   onClick={() => handleSectionClick(section)}
                 >
-                  Перейти в {section.title.toLowerCase()}
+                  {section.id === 'personal' ? 'Перейти в личный кабинет' : `Перейти в ${section.title.toLowerCase()}`}
                 </Button>
               </CardContent>
             </Card>
@@ -187,12 +187,12 @@ const Index = () => {
               <div className="text-gray-600">Обработанных документов</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-              <div className="text-gray-600">Поддержка ИИ-бота</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">15,672</div>
+              <div className="text-gray-600">Ответов ИИ-бота</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">99.9%</div>
-              <div className="text-gray-600">Время работы системы</div>
+              <div className="text-3xl font-bold text-orange-600 mb-2">2,341</div>
+              <div className="text-gray-600">Активных сессий</div>
             </div>
           </div>
         </div>

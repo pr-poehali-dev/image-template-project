@@ -178,12 +178,15 @@ const PersonalCabinet = () => {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="documents" className="space-y-6">
-          <TabsList className="grid grid-cols-3 w-full max-w-md bg-white/80 backdrop-blur-sm">
+          <TabsList className="grid grid-cols-4 w-full max-w-lg bg-white/80 backdrop-blur-sm">
             <TabsTrigger value="documents" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Документы
             </TabsTrigger>
             <TabsTrigger value="grades" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Оценки
+            </TabsTrigger>
+            <TabsTrigger value="scholarship" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              Стипендия
             </TabsTrigger>
             <TabsTrigger value="schedule" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               Расписание
@@ -260,6 +263,95 @@ const PersonalCabinet = () => {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          {/* Scholarship Tab */}
+          <TabsContent value="scholarship" className="space-y-6">
+            <h2 className="text-xl font-semibold">Стипендия и доходы</h2>
+            
+            {/* Current Month Scholarship */}
+            <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-4 bg-green-100 rounded-xl">
+                      <Icon name="DollarSign" size={32} className="text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-gray-900">Стипендия за март 2024</h3>
+                      <p className="text-gray-600">Академическая стипендия</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-3xl font-bold text-green-600">12 450 ₽</p>
+                    <Badge className="bg-green-100 text-green-800 border-green-200 mt-2">
+                      Начислена
+                    </Badge>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Scholarship History */}
+            <div className="grid gap-4">
+              <h3 className="text-lg font-semibold">История выплат</h3>
+              
+              {[
+                { month: "Февраль 2024", amount: 12450, status: "выплачена", type: "Академическая", date: "25.02.2024" },
+                { month: "Январь 2024", amount: 12450, status: "выплачена", type: "Академическая", date: "25.01.2024" },
+                { month: "Декабрь 2023", amount: 15600, status: "выплачена", type: "Повышенная", date: "25.12.2023" },
+                { month: "Ноябрь 2023", amount: 15600, status: "выплачена", type: "Повышенная", date: "25.11.2023" },
+                { month: "Октябрь 2023", amount: 12450, status: "выплачена", type: "Академическая", date: "25.10.2023" }
+              ].map((payment, index) => (
+                <Card key={index} className="bg-white/80 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-blue-50">
+                          <Icon name="Wallet" size={24} className="text-blue-600" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium text-lg">{payment.month}</h4>
+                          <p className="text-gray-600">{payment.type} стипендия • {payment.date}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xl font-semibold text-gray-900">{payment.amount.toLocaleString()} ₽</p>
+                        <Badge className="bg-green-100 text-green-800 border-green-200">
+                          {payment.status}
+                        </Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Scholarship Statistics */}
+            <Card className="bg-white/80 backdrop-blur-sm border-white/20">
+              <CardHeader>
+                <CardTitle>Статистика стипендий</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                    <Icon name="TrendingUp" size={32} className="mx-auto text-blue-600 mb-2" />
+                    <p className="text-2xl font-bold text-blue-600">68 850 ₽</p>
+                    <p className="text-gray-600">За учебный год</p>
+                  </div>
+                  <div className="text-center p-4 bg-purple-50 rounded-lg">
+                    <Icon name="Award" size={32} className="mx-auto text-purple-600 mb-2" />
+                    <p className="text-2xl font-bold text-purple-600">3 месяца</p>
+                    <p className="text-gray-600">Повышенная стипендия</p>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 rounded-lg">
+                    <Icon name="Calendar" size={32} className="mx-auto text-green-600 mb-2" />
+                    <p className="text-2xl font-bold text-green-600">25 числа</p>
+                    <p className="text-gray-600">Дата выплаты</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           {/* Schedule Tab */}

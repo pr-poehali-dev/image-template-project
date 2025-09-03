@@ -114,6 +114,11 @@ const Index = () => {
                 <Icon name="User" className="w-4 h-4 mr-2" />
                 Войти
               </Button>
+              <img 
+                src="https://cdn.poehali.dev/files/3d2e730b-89ba-43e7-ac91-e3c93efec1d6.png" 
+                alt="Логотип ТИУ"
+                className="h-12 w-auto ml-4"
+              />
             </div>
           </div>
         </div>
